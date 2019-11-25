@@ -1,6 +1,8 @@
 class Superman extends Component {
   constructor(game, x, y, w, h) {
     super(game, x, y, w, h);
+    this.sound = new Audio();
+    this.life = 3;
   }
 
   flySuperman() {
@@ -8,10 +10,23 @@ class Superman extends Component {
       const key = event.keyCode;
       event.preventDefault();
 
-      if (key === 37 && this.x >= 0) this.x -= 30;
-      else if (key === 38 && this.y >= 20) this.y -= 30;
-      else if (key === 39 && this.x <= 1000 - this.width) this.x += 30;
-      else if (key === 40 && this.y <= 500 - this.height) this.y += 30;
+      if (key === 37 && this.x >= 0) {
+        this.sound.src = './audio/jump.wav';
+        this.sound.play();
+        this.x -= 50;
+      } else if (key === 38 && this.y >= 20) {
+        this.sound.src = './audio/jump.wav';
+        this.sound.play();
+        this.y -= 50;
+      } else if (key === 39 && this.x <= 1000 - this.width) {
+        this.sound.src = './audio/jump.wav';
+        this.sound.play();
+        this.x += 50;
+      } else if (key === 40 && this.y <= 500 - this.height) {
+        this.sound.src = './audio/jump.wav';
+        this.sound.play();
+        this.y += 50;
+      }
 
       // // another way.
       //   const key = event.keyCode;

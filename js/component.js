@@ -19,4 +19,37 @@ class Component {
     // compCTX.drawImage(this.img, this.x, this.y, this.width, this.height);
     // });
   }
+
+  leftSide() {
+    return this.x;
+  }
+  rightSide() {
+    return this.x + this.width - 10;
+  }
+  theTop() {
+    return this.y;
+  }
+  theBottom() {
+    return this.y + this.height - 20;
+  }
+
+  collision(otherComp) {
+    const crossLeft =
+      otherComp.x <= this.rightSide() && otherComp.x >= this.leftSide();
+
+    const crossRight =
+      otherComp.x + otherComp.width >= this.leftSide() &&
+      otherComp.x + otherComp.width <= this.rightSide();
+
+    const crossTop =
+      otherComp.y <= this.theBottom() && otherComp.y >= this.theTop();
+
+    const crossBottom =
+      otherComp.y + otherComp.height >= this.theTop() &&
+      otherComp.y + otherComp.height <= this.theBottom();
+    if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
+      return true;
+    }
+    return false;
+  }
 }
