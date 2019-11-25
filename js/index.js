@@ -19,13 +19,8 @@ class Game {
       this.fireball.drawImg('./img/fireball.png');
       this.superman.drawImg('./img/superman.png');
       if (this.superman.collision(this.fireball)) {
-        if (this.superman.life === 0) {
-          this.gameOver();
-          clearInterval(intervalID);
-        } else {
-          this.superman.life--;
-          this.start();
-        }
+        this.gameOver();
+        clearInterval(intervalID);
       }
       this.fireball.x -= 5;
       if (this.fireball.x <= -50) {
@@ -59,8 +54,8 @@ class Game {
   // }
 
   gameOver() {
-    this.sound.src = './audio/theme-music.wav';
-    this.sound.play();
+    // this.sound.src = './audio/theme-music.wav';
+    // this.sound.play();
     this.clearCanvas();
     this.drawBackground();
     this.ctx.font = '70px Arial bold';
